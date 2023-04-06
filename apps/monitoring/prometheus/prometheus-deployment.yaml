@@ -44,4 +44,7 @@ spec:
         - name: prometheus-storage-volume
           # persistentVolumeClaim:
           #   claimName: prometheus-pvc
-          emptyDir: {}
+          nfs:
+            server: lab-helper.lan
+            path: /storage/monitoring/prometheus
+            readOnly: false
