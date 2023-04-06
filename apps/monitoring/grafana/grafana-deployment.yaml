@@ -35,7 +35,10 @@ spec:
             readOnly: false
       volumes:
         - name: grafana-storage
-          emptyDir: {}
+          nfs:
+            server: lab-helper.lan
+            path: /storage/monitoring/grafana
+            readOnly: false
         - name: grafana-datasources
           configMap:
               defaultMode: 420
