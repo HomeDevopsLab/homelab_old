@@ -1,0 +1,16 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: longhorn-2repl
+provisioner: driver.longhorn.io
+allowVolumeExpansion: true
+parameters:
+  numberOfReplicas: "2"
+  staleReplicaTimeout: "2880" # 48 hours in minutes
+  fromBackup: ""
+reclaimPolicy: Retain
+#  diskSelector: "ssd,fast"
+#  nodeSelector: "storage,fast"
+#  recurringJobs: '[{"name":"snap", "task":"snapshot", "cron":"*/1 * * * *", "retain":1},
+#                   {"name":"backup", "task":"backup", "cron":"*/2 * * * *", "retain":1,
+#                    "labels": {"interval":"2m"}}]'
