@@ -1,0 +1,38 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  namespace: default
+  name: www
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: ./basic
+      sourceRef:
+        kind: GitRepository
+        name: basic-chart
+        namespace: default
+      interval: 1m
+  values:
+    application:
+      name: helloworld
+      type: other
+      services:
+        - name: http
+          port: 80
+    replicaCount: 1
+    image:
+      repository: devkrolikowski/helloworld
+      tag: 0.0.1 # {"$imagepolicy": "flux-system:helloworld:tag"}
+    resources:
+      limits:
+        memory: "50Mi"
+        cpu: "50m"
+      requests:
+        memory: "10Mi"
+        cpu: "10m"
+    ingress:
+      enabled: true
+      servicePort: 80
+      hosts:
+        - host: helloworld.lan
