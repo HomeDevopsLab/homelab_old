@@ -4,14 +4,6 @@ metadata:
   name: www
   namespace: default
 spec:
-  chart:
-    spec:
-      chart: ./basic
-      sourceRef:
-        kind: GitRepository
-        name: basic-chart-longhorn
-        namespace: default
-      interval: 1m
   interval: 1m
   values:
     application:
