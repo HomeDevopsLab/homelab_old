@@ -22,6 +22,7 @@ spec:
           port: 80
     replicaCount: 1
     image:
+      imagePolicy: false
       repository: devkrolikowski/helloworld
       tag: 0.0.1 # {"$imagepolicy": "flux-system:helloworld:tag"}
     resources:
