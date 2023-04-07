@@ -5,6 +5,14 @@ metadata:
   namespace: default
 spec:
   interval: 1m
+  chart:
+    spec:
+      chart: ./basic
+      sourceRef:
+        kind: GitRepository
+        name: basic-chart
+        namespace: default
+      interval: 1m
   values:
     application:
       name: demo-app
