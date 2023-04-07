@@ -1,37 +1,37 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  name: www
-  namespace: default
-spec:
-  interval: 1m
-  chart:
-    spec:
-      chart: ./basic
-      sourceRef:
-        kind: GitRepository
-        name: basic-chart-longhorn
-        namespace: default
-      interval: 1m
-  values:
-    application:
-      name: demo-app
-      type: other
-      services:
-        - name: http
-          port: 80
-    replicaCount: 1
-    image:
-      imagePolicy: true
-      repository: devkrolikowski/demo_app
-      tag: 0.1.7 # {"$imagepolicy": "flux-system:demo-app-www:tag"}
-    resources:
-      limits:
-        memory: "50Mi"
-        cpu: "50m"
-      requests:
-        memory: "10Mi"
-        cpu: "10m"
-    ingress:
-      hosts:
-        - host: demo-app.lan
+# apiVersion: helm.toolkit.fluxcd.io/v2beta1
+# kind: HelmRelease
+# metadata:
+#   name: www
+#   namespace: default
+# spec:
+#   interval: 1m
+#   chart:
+#     spec:
+#       chart: ./basic
+#       sourceRef:
+#         kind: GitRepository
+#         name: basic-chart-longhorn
+#         namespace: default
+#       interval: 1m
+#   values:
+#     application:
+#       name: demo-app
+#       type: other
+#       services:
+#         - name: http
+#           port: 80
+#     replicaCount: 1
+#     image:
+#       imagePolicy: true
+#       repository: devkrolikowski/demo_app
+#       tag: 0.1.7 # {"$imagepolicy": "flux-system:demo-app-www:tag"}
+#     resources:
+#       limits:
+#         memory: "50Mi"
+#         cpu: "50m"
+#       requests:
+#         memory: "10Mi"
+#         cpu: "10m"
+#     ingress:
+#       hosts:
+#         - host: demo-app.lan
