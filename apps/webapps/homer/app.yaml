@@ -1,0 +1,43 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: www
+  namespace: default
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: ./basic
+      sourceRef:
+        kind: GitRepository
+        name: basic-chart-longhorn
+        namespace: default
+      interval: 1m
+  values:
+    application:
+      type: other
+      services:
+        - name: http
+          port: 8080
+    image:
+      repository: b4bz/homer
+      tag: v23.02.2
+    resources:
+      limits:
+        memory: "512Mi"
+        cpu: "600m"
+      requests:
+        memory: "50Mi"
+        cpu: "10m"
+    ingress:
+      servicePort: 8080
+      hosts:
+        - host: homer.lan
+    volumes:
+      enabled: true
+      mountPath: 
+        - assets:/www/assets
+      ownership: 1000:1000
+      type:
+        pvc:
+          size: 250Mi
