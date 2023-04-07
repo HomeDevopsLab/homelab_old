@@ -24,7 +24,7 @@ spec:
     image:
       imagePolicy: true
       repository: devkrolikowski/demo_app
-      tag: 0.1.4 # {"$imagepolicy": "flux-system:demo-app-www:tag"}
+      tag: 0.1.5 # {"$imagepolicy": "flux-system:demo-app-www:tag"}
     resources:
       limits:
         memory: "50Mi"
