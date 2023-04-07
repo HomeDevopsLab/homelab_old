@@ -10,7 +10,7 @@ spec:
       chart: ./basic
       sourceRef:
         kind: GitRepository
-        name: basic-chart
+        name: basic-chart-longhorn
         namespace: default
       interval: 1m
   values:
