@@ -16,7 +16,7 @@ spec:
   values:
     application:
       type: wordpress
-    replicaCount: 1
+    replicaCount: 2
     image:
       repository: devkrolikowski/wordpress-generic
       tag: 0.1.0 # {"$imagepolicy": "flux-system:przyrodniczy:tag"}
