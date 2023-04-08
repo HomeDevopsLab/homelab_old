@@ -5,10 +5,18 @@ metadata:
   namespace: default
 spec:
   interval: 1m
+  chart:
+    spec:
+      chart: ./basic
+      sourceRef:
+        kind: GitRepository
+        name: basic-chart-longhorn
+        namespace: default
+      interval: 1m
   values:
     application:
       type: wordpress
-    replicaCount: 2
+    replicaCount: 1
     image:
       repository: devkrolikowski/wordpress-generic
       tag: 0.1.0 # {"$imagepolicy": "flux-system:przyrodniczy:tag"}
