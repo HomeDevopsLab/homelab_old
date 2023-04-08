@@ -1,46 +1,46 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  name: www
-  namespace: default
-spec:
-  interval: 1m
-  chart:
-    spec:
-      chart: ./basic
-      sourceRef:
-        kind: GitRepository
-        name: basic-chart-longhorn
-        namespace: default
-      interval: 1m
-  values:
-    application:
-      type: wordpress
-    replicaCount: 2
-    image:
-      repository: devkrolikowski/wordpress-generic
-      tag: 0.1.0 # {"$imagepolicy": "flux-system:przyrodniczy:tag"}
-    resources:
-      limits:
-        memory: "512Mi"
-        cpu: "600m"
-      requests:
-        memory: "250Mi"
-        cpu: "300m"
-    ingress:
-      ssl: true
-      hosts:
-        - host: przyrodniczy.website
-      tls:
-        - hosts:
-            - przyrodniczy.website
-    volumes:
-      enabled: true
-      mountPath:
-        - html:/var/www/html
-      ownership: 0:0
-      type:
-        pvc:
-          size: 2Gi
-    database:
-      enabled: true
+# apiVersion: helm.toolkit.fluxcd.io/v2beta1
+# kind: HelmRelease
+# metadata:
+#   name: www
+#   namespace: default
+# spec:
+#   interval: 1m
+#   chart:
+#     spec:
+#       chart: ./basic
+#       sourceRef:
+#         kind: GitRepository
+#         name: basic-chart-longhorn
+#         namespace: default
+#       interval: 1m
+#   values:
+#     application:
+#       type: wordpress
+#     replicaCount: 1
+#     image:
+#       repository: devkrolikowski/wordpress-generic
+#       tag: 0.1.0 # {"$imagepolicy": "flux-system:przyrodniczy:tag"}
+#     resources:
+#       limits:
+#         memory: "512Mi"
+#         cpu: "600m"
+#       requests:
+#         memory: "250Mi"
+#         cpu: "300m"
+#     ingress:
+#       ssl: true
+#       hosts:
+#         - host: przyrodniczy.website
+#       tls:
+#         - hosts:
+#             - przyrodniczy.website
+#     volumes:
+#       enabled: true
+#       mountPath:
+#         - html:/var/www/html
+#       ownership: 0:0
+#       type:
+#         pvc:
+#           size: 2Gi
+#     database:
+#       enabled: true
