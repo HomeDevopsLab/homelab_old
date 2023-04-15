@@ -19,7 +19,7 @@ spec:
       enabled: true
     image:
       repository: gitea/gitea
-      tag: 1.19.0-linux-arm64-rootless
+      tag: 1.19-dev-linux-arm64
     env:
       - name: USER_UID
         value: "65534"
