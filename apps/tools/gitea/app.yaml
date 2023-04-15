@@ -22,9 +22,9 @@ spec:
       tag: 1.19.0-linux-arm64-rootless
     env:
       - name: USER_UID
-        value: "1000"
+        value: "0"
       - name: USER_GID
-        value: "1000"
+        value: "0"
       - name: GITEA__database__DB_TYPE
         value: mysql
       - name: GITEA__database__HOST
