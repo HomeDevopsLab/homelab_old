@@ -22,9 +22,9 @@ spec:
       tag: 1.19-dev-linux-arm64
     env:
       - name: USER_UID
-        value: "65534"
+        value: "0"
       - name: USER_GID
-        value: "65534"
+        value: "0"
       - name: GITEA__database__DB_TYPE
         value: mysql
       - name: GITEA__database__HOST
@@ -64,8 +64,7 @@ spec:
       mountPath: 
         - gitea:/var/lib/gitea
         - config:/etc/gitea
-        - data:/data/gitea
-        - git:/data/git
+        - data:/data
       ownership: 65534:65534
       type:
         nfs:
