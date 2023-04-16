@@ -54,7 +54,7 @@ spec:
         targetPort: 3000
       - name: ssh
         servicePort: 2222
-        targetPort: 2222
+        targetPort: 22
     ingress:
       enabled: true
       hosts:
@@ -64,6 +64,8 @@ spec:
       mountPath: 
         - gitea:/var/lib/gitea
         - config:/etc/gitea
+        - data:/data/gitea
+        - git:/data/git
       ownership: 65534:65534
       type:
         nfs:
