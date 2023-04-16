@@ -22,9 +22,9 @@ spec:
       tag: 1.19-dev-linux-arm64
     env:
       - name: USER_UID
-        value: "1024"
+        value: "65534"
       - name: USER_GID
-        value: "100"
+        value: "65534"
       - name: GITEA__database__DB_TYPE
         value: mysql
       - name: GITEA__database__HOST
