@@ -1,0 +1,59 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: wikijs
+  namespace: default
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: ./chart
+      sourceRef:
+        kind: GitRepository
+        name: homelab-app-chart
+        namespace: default
+      interval: 1m
+  values:
+    replicaCount: 1
+    database:
+      enabled: true
+    image:
+      repository: ghcr.io/requarks/wiki
+      tag: "2"
+    env:
+      - name: DB_TYPE
+        value: "mysql"
+      - name: DB_HOST
+        value: "lab-helper.lan"
+      - name: DB_PORT
+        value: "3306"
+      - name: DB_NAME
+        value: "wikijs"
+      - name: DB_USER
+        valueFrom:
+          secretKeyRef:
+            name: wikijs-db
+            key: login
+      - name: DB_PASS
+        valueFrom:
+          secretKeyRef:
+            name: wikijs-db
+            key: password
+    resources:
+      limits:
+        memory: "1024Mi"
+        cpu: "2"
+      requests:
+        memory: 100Mi
+        cpu: 10m
+    services:
+      - name: http
+        servicePort: 80
+        targetPort: 3000
+    ingress:
+      enabled: true
+      ssl: false
+      hosts:
+        - host: doc-lab.lan
+    volumes:
+      enabled: false
