@@ -57,8 +57,12 @@ spec:
         targetPort: 22
     ingress:
       enabled: true
+      ssl: true
       hosts:
-        - host: gitea.lan
+        - host: gitea.angrybits.pl
+      tls:
+        - hosts:
+            - gitea.angrybits.pl
     volumes:
       enabled: true
       mountPath: 
