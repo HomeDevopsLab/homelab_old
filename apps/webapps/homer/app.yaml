@@ -7,37 +7,34 @@ spec:
   interval: 1m
   chart:
     spec:
-      chart: ./basic
+      chart: ./chart
       sourceRef:
         kind: GitRepository
-        name: basic-chart-longhorn
+        name: homelab-app-chart
         namespace: default
       interval: 1m
   values:
-    application:
-      type: other
-      services:
-        - name: http
-          port: 8080
+    replicaCount: 1
+    database:
+      enabled: false
     image:
-      repository: b4bz/homer
-      tag: v23.02.2
+      repository: gitea.angrybits.pl/kkrolikowski/homer
+      tag: 0.0.1
     resources:
       limits:
-        memory: "512Mi"
-        cpu: "600m"
+        memory: "256Mi"
+        cpu: "200m"
       requests:
-        memory: "50Mi"
-        cpu: "10m"
+        memory: 50Mi
+        cpu: 10m
+    services:
+      - name: http
+        servicePort: 80
+        targetPort: 8080
     ingress:
-      servicePort: 8080
+      enabled: true
+      ssl: false
       hosts:
         - host: homer.lan
     volumes:
-      enabled: true
-      mountPath: 
-        - assets:/www/assets
-      ownership: 1000:1000
-      type:
-        pvc:
-          size: 250Mi
+      enabled: false
