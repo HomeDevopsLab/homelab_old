@@ -1,0 +1,72 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: drone
+  namespace: default
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: ./chart
+      sourceRef:
+        kind: GitRepository
+        name: homelab-app-chart
+        namespace: default
+      interval: 1m
+  values:
+    replicaCount: 1
+    database:
+      enabled: false
+    image:
+      repository: drone/drone
+      tag: "2"
+    env:
+      - name: DRONE_GITEA_SERVER
+        value: "https://gitea.angrybits.pl"
+      - name: DRONE_GITEA_CLIENT_ID
+        valueFrom:
+          secretKeyRef:
+            name: drone-secret
+            key: DRONE_GITEA_CLIENT_ID
+      - name: DRONE_GITEA_CLIENT_SECRET
+        valueFrom:
+          secretKeyRef:
+            name: drone-secret
+            key: DRONE_GITEA_CLIENT_SECRET
+      - name: DRONE_RPC_SECRET
+        valueFrom:
+          secretKeyRef:
+            name: drone-secret
+            key: DRONE_RPC_SECRET
+      - name: DRONE_SERVER_HOST
+        value: "drone.angrybits.pl"
+      - name: DRONE_SERVER_PROTO
+        value: "https"
+    resources:
+      limits:
+        memory: "1024Mi"
+        cpu: "2"
+      requests:
+        memory: 256Mi
+        cpu: 500m
+    services:
+      - name: http
+        servicePort: 80
+        targetPort: 80
+    ingress:
+      enabled: true
+      ssl: true
+      hosts:
+        - host: drone.angrybits.pl
+      tls:
+        - hosts:
+            - drone.angrybits.pl
+    volumes:
+      enabled: true
+      mountPath: 
+        - drone:/data
+      ownership: 1024:100
+      type:
+        nfs:
+          server: lab-storage.lan
+          path: /volume1/storagelab
