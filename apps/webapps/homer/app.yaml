@@ -20,7 +20,7 @@ spec:
     image:
       imagePolicy: true
       repository: gitea.angrybits.pl/kkrolikowski/homer
-      tag: 0.1.0 # {"$imagepolicy": "flux-system:homer-www:tag"}
+      tag: 0.1.1 # {"$imagepolicy": "flux-system:homer-www:tag"}
     resources:
       limits:
         memory: "256Mi"
