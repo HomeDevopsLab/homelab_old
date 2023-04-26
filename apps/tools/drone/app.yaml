@@ -42,6 +42,11 @@ spec:
         value: "drone.angrybits.pl"
       - name: DRONE_SERVER_PROTO
         value: "https"
+      - name: DRONE_USER_CREATE
+        valueFrom:
+          secretKeyRef:
+            name: drone-secret
+            key: DRONE_ADMIN
     resources:
       limits:
         memory: "1024Mi"
