@@ -35,6 +35,7 @@ data:
         static_configs:
           - targets: ['lab-helper.lan:9100']
       - job_name: 'basen_stats'
+        scrape_interval: 60s
         static_configs:
           - targets: ['spwatcher-www-http-svc.default.svc.cluster.local:9000']
       - job_name: 'node-exporter'
