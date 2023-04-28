@@ -20,7 +20,7 @@ spec:
     image:
       imagePolicy: true
       repository: gitea.angrybits.pl/kkrolikowski/swimmingpoolwatcher
-      tag: 0.0.1 # {"$imagepolicy": "flux-system:spwatcher-www:tag"}
+      tag: 0.0.2 # {"$imagepolicy": "flux-system:spwatcher-www:tag"}
     resources:
       limits:
         memory: "256Mi"
