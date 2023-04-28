@@ -22,7 +22,7 @@ spec:
       tag: 1.19-dev-linux-arm64
     env:
       - name: USER_UID
-        value: "1024"
+        value: "65534"
       - name: USER_GID
         value: "100"
       - name: GITEA__database__DB_TYPE
@@ -69,7 +69,7 @@ spec:
         - gitea:/var/lib/gitea
         - config:/etc/gitea
         - data:/data
-      ownership: 1024:100
+      ownership: 65534:100
       type:
         nfs:
           server: lab-storage.lan
