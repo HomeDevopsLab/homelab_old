@@ -30,8 +30,8 @@ spec:
         cpu: 10m
     services:
       - name: http
-        servicePort: 8000
-        targetPort: 8000
+        servicePort: 9000
+        targetPort: 9000
     ingress:
       enabled: true
       ssl: false
