@@ -36,7 +36,7 @@ data:
           - targets: ['lab-helper.lan:9100']
       - job_name: 'basen_stats'
         static_configs:
-          - targets: ['spwatcher-www-http-svc:9000']
+          - targets: ['spwatcher-www-http-svc.default.svc.cluster.local:9000']
       - job_name: 'node-exporter'
         kubernetes_sd_configs:
           - role: endpoints
