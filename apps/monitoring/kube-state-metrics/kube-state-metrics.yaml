@@ -1,5 +1,8 @@
 apiVersion: apps/v1
 kind: DaemonSet
+metadata:
+  name: kube-state-metrics
+  namespace: monitoring
 spec:
   template:
     spec:
