@@ -1,67 +1,68 @@
-# apiVersion: helm.toolkit.fluxcd.io/v2beta1
-# kind: HelmRelease
-# metadata:
-#   name: mattermost
-#   namespace: default
-# spec:
-#   interval: 1m
-#   chart:
-#     spec:
-#       chart: ./chart
-#       sourceRef:
-#         kind: GitRepository
-#         name: homelab-app-chart
-#         namespace: default
-#       interval: 1m
-#   values:
-#     replicaCount: 1
-#     database:
-#       enabled: true
-#     image:
-#       repository: mattermost/mattermost-team-edition
-#       tag: "7.1"
-#     env:
-#       - name: MM_SQLSETTINGS_DRIVERNAME
-#         value: postgres
-#       - name: MM_SQLSETTINGS_DATASOURCE
-#         valueFrom:
-#           secretKeyRef:
-#             name: mattermost-secret
-#             key: MM_SQLSETTINGS_DATASOURCE
-#       - name: MM_BLEVESETTINGS_INDEXDIR
-#         value: /mattermost/bleve-indexes
-#       - name: TZ
-#         value: "Europe/Warsaw"
-#     resources:
-#       limits:
-#         memory: "1024Mi"
-#         cpu: "2"
-#       requests:
-#         memory: 256Mi
-#         cpu: 250m
-#     services:
-#       - name: http
-#         servicePort: 80
-#         targetPort: 80
-#     ingress:
-#       enabled: true
-#       ssl: true
-#       hosts:
-#         - host: chat.angrybits.pl
-#       tls:
-#         - hosts:
-#             - chat.angrybits.pl
-#     volumes:
-#       enabled: true
-#       mountPath:
-#         - config:/mattermost/config
-#         - data:/mattermost/data
-#         - logs:/mattermost/logs
-#         - plugins:/mattermost/plugins
-#         - client_plugins:/mattermost/client/plugins
-#         - indexes:/mattermost/bleve-indexes
-#       ownership: 1024:100
-#       type:
-#         nfs:
-#           server: lab-storage.lan
-#           path: /volume1/storagelab
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: mattermost
+  namespace: default
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: ./chart
+      sourceRef:
+        kind: GitRepository
+        name: homelab-app-chart
+        namespace: default
+      interval: 1m
+  values:
+    replicaCount: 1
+    database:
+      enabled: true
+    image:
+      imagePolicy: true
+      repository: gitea.angrybits.pl/kkrolikowski/mattermost
+      tag: 0.0.1 # {"$imagepolicy": "flux-system:mattermost:tag"}
+    env:
+      - name: MM_SQLSETTINGS_DRIVERNAME
+        value: postgres
+      - name: MM_SQLSETTINGS_DATASOURCE
+        valueFrom:
+          secretKeyRef:
+            name: mattermost-secret
+            key: MM_SQLSETTINGS_DATASOURCE
+      - name: MM_BLEVESETTINGS_INDEXDIR
+        value: /mattermost/bleve-indexes
+      - name: TZ
+        value: "Europe/Warsaw"
+    resources:
+      limits:
+        memory: "1024Mi"
+        cpu: "2"
+      requests:
+        memory: 256Mi
+        cpu: 250m
+    services:
+      - name: http
+        servicePort: 80
+        targetPort: 80
+    ingress:
+      enabled: true
+      ssl: true
+      hosts:
+        - host: chat.angrybits.pl
+      tls:
+        - hosts:
+            - chat.angrybits.pl
+    volumes:
+      enabled: true
+      mountPath:
+        - config:/mattermost/config
+        - data:/mattermost/data
+        - logs:/mattermost/logs
+        - plugins:/mattermost/plugins
+        - client_plugins:/mattermost/client/plugins
+        - indexes:/mattermost/bleve-indexes
+      ownership: 1024:100
+      type:
+        nfs:
+          server: lab-storage.lan
+          path: /volume1/storagelab
