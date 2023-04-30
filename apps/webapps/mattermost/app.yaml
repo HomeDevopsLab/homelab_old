@@ -26,7 +26,7 @@ spec:
       - name: MM_SQLSETTINGS_DATASOURCE
         valueFrom:
           secretKeyRef:
-            name: mattermost-secrets
+            name: mattermost-secret
             key: MM_SQLSETTINGS_DATASOURCE
       - name: MM_BLEVESETTINGS_INDEXDIR
         value: /mattermost/bleve-indexes
