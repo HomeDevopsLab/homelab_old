@@ -33,6 +33,8 @@ spec:
         value: /mattermost/bleve-indexes
       - name: TZ
         value: "Europe/Warsaw"
+      - name: MM_SERVICESETTINGS_SITEURL
+        value: https://chat.angrybits.pl
     resources:
       limits:
         memory: "1024Mi"
