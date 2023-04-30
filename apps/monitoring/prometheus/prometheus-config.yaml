@@ -112,6 +112,16 @@ data:
       - job_name: 'kube-state-metrics'
         static_configs:
           - targets: ['kube-state-metrics.kube-system.svc.cluster.local:8080']
+        relabel_configs:
+          - action: replace
+            replacement: node-exporter
+            target_label: job
+          - action: replace
+            source_labels:
+              - agent_hostname
+            regex: (.*):(\d+)
+            replacement: $1
+            target_label: nodename
 
       - job_name: 'kubernetes-cadvisor'
 
