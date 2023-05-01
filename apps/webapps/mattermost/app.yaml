@@ -18,9 +18,9 @@ spec:
     database:
       enabled: false
     image:
-      imagePolicy: false
+      imagePolicy: true
       repository: gitea.angrybits.pl/kkrolikowski/mattermost
-      tag: 0.1.0
+      tag: 0.1.2 # {"$imagepolicy": "flux-system:mattermost:tag"}
     env:
       - name: MM_SQLSETTINGS_DRIVERNAME
         value: postgres
