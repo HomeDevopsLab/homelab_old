@@ -19,8 +19,8 @@ spec:
       enabled: false
     image:
       imagePolicy: false
-      repository: iotops/mattermost
-      tag: c8b5a40f9951d2ff3dc77ffd1977b856b99cf516
+      repository: nerzhul/mattermost-server-arm64
+      tag: 7.5.2-2
     env:
       - name: MM_SQLSETTINGS_DRIVERNAME
         value: postgres
