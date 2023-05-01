@@ -43,10 +43,10 @@ spec:
             key: password
     resources:
       limits:
-        memory: "1024Mi"
+        memory: "2Gi"
         cpu: "2"
       requests:
-        memory: 256Mi
+        memory: 512Mi
         cpu: 500m
     services:
       - name: http
@@ -65,7 +65,7 @@ spec:
             - gitea.angrybits.pl
     volumes:
       enabled: true
-      mountPath: 
+      mountPath:
         - gitea:/var/lib/gitea
         - config:/etc/gitea
         - data:/data
