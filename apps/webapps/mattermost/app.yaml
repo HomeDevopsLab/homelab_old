@@ -19,8 +19,8 @@ spec:
       enabled: false
     image:
       imagePolicy: false
-      repository: nerzhul/mattermost-server-arm64
-      tag: 7.5.2-2
+      repository: gitea.angrybits.pl/kkrolikowski/mattermost
+      tag: 0.1.0
     env:
       - name: MM_SQLSETTINGS_DRIVERNAME
         value: postgres
@@ -29,8 +29,6 @@ spec:
           secretKeyRef:
             name: mattermost-secret
             key: MM_SQLSETTINGS_DATASOURCE
-      - name: MM_BLEVESETTINGS_INDEXDIR
-        value: /mattermost/bleve-indexes
       - name: TZ
         value: "Europe/Warsaw"
       - name: MM_SERVICESETTINGS_SITEURL
@@ -57,12 +55,9 @@ spec:
     volumes:
       enabled: true
       mountPath:
-        - config:/mattermost/config
-        - data:/mattermost/data
-        - logs:/mattermost/logs
-        - plugins:/mattermost/plugins
-        - client_plugins:/mattermost/client/plugins
-        - indexes:/mattermost/bleve-indexes
+        - config:/opt/mattermost/config
+        - data:/opt/mattermost/data
+        - logs:/opt/mattermost/logs
       ownership: 1024:100
       type:
         nfs:
