@@ -33,6 +33,10 @@ spec:
         value: "Europe/Warsaw"
       - name: MM_SERVICESETTINGS_SITEURL
         value: https://chat.angrybits.pl
+      - name: MATTERMOST_IMAGE
+        value: mattermost-team-edition
+      - name: MATTERMOST_IMAGE_TAG
+        value: "7.5.2"
     resources:
       limits:
         memory: "1024Mi"
