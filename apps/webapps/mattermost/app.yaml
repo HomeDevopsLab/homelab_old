@@ -55,7 +55,6 @@ spec:
     volumes:
       enabled: true
       mountPath:
-        - config:/opt/mattermost/config
         - data:/opt/mattermost/data
         - logs:/opt/mattermost/logs
       ownership: 1024:100
