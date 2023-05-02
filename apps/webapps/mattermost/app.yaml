@@ -46,7 +46,7 @@ spec:
         cpu: "2"
       requests:
         memory: 256Mi
-        cpu: 500m
+        cpu: 600m
     services:
       - name: http
         servicePort: 8080
