@@ -20,7 +20,7 @@ spec:
     image:
       imagePolicy: true
       repository: gitea.angrybits.pl/kkrolikowski/mattermost
-      tag: 2.0.0 # {"$imagepolicy": "flux-system:mattermost:tag"}
+      tag: 2.1.0 # {"$imagepolicy": "flux-system:mattermost:tag"}
     env:
       - name: MM_SQLSETTINGS_DRIVERNAME
         value: postgres
@@ -41,7 +41,6 @@ spec:
         value: ":8080"
       - name: MM_SERVICESETTINGS_ENABLEINSECUREOUTGOINGCONNECTIONS
         value: "true"
-
     resources:
       limits:
         memory: "1024Mi"
