@@ -26,7 +26,7 @@ spec:
         cpu: "600m"
       requests:
         memory: "250Mi"
-        cpu: "300m"
+        cpu: "200m"
     ingress:
       ssl: true
       hosts:
