@@ -39,6 +39,8 @@ spec:
         value: "7.5.2"
       - name: MM_SERVICESETTINGS_LISTENADDRESS
         value: ":8080"
+      - name: MM_SERVICESETTINGS_ENABLEINSECUREOUTGOINGCONNECTIONS
+        value: "true"
 
     resources:
       limits:
