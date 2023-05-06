@@ -48,7 +48,15 @@ spec:
       - name: GITEA__mailer__MAILER_TYPE
         value: smtp
       - name: GITEA__mailer__HOST
-        value: smtp.lab.angrybits.pl
+        valueFrom:
+          secretKeyRef:
+            name: smtp-secret
+            key: server_hostname
+      - name: GITEA__mailer_SMTP_PORT
+        valueFrom:
+          secretKeyRef:
+            name: smtp-secret
+            key: smtp_port
       - name: GITEA__mailer__IS_TLS_ENABLED
         value: "false"
     resources:
