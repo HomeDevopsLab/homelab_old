@@ -1,60 +1,60 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  name: smtp-server
-  namespace: default
-spec:
-  interval: 1m
-  chart:
-    spec:
-      chart: ./chart
-      sourceRef:
-        kind: GitRepository
-        name: homelab-app-chart
-        namespace: default
-      interval: 1m
-  values:
-    replicaCount: 1
-    database:
-      enabled: false
-    image:
-      repository: juanluisbaptiste/postfix
-      tag: "1.7.1"
-    env:
-      - name: SMTP_SERVER
-        valueFrom:
-          secretKeyRef:
-            name: smtp-secret
-            key: smtp_server
-      - name: SERVER_HOSTNAME
-        valueFrom:
-          secretKeyRef:
-            name: smtp-secret
-            key: server_hostname
-      - name: SMTP_PORT
-        valueFrom:
-          secretKeyRef:
-            name: smtp-secret
-            key: smtp_port
-      - name: SMTP_NETWORKS
-        valueFrom:
-          secretKeyRef:
-            name: smtp-secret
-            key: networks
-      - name: ALWAYS_ADD_MISSING_HEADERS
-        value: "true"
-    resources:
-      limits:
-        memory: "1024Mi"
-        cpu: "2"
-      requests:
-        memory: 256Mi
-        cpu: 500m
-    services:
-      - name: smtp
-        servicePort: 25
-        targetPort: 25
-    ingress:
-      enabled: false
-    volumes:
-      enabled: false
+# apiVersion: helm.toolkit.fluxcd.io/v2beta1
+# kind: HelmRelease
+# metadata:
+#   name: smtp-server
+#   namespace: default
+# spec:
+#   interval: 1m
+#   chart:
+#     spec:
+#       chart: ./chart
+#       sourceRef:
+#         kind: GitRepository
+#         name: homelab-app-chart
+#         namespace: default
+#       interval: 1m
+#   values:
+#     replicaCount: 1
+#     database:
+#       enabled: false
+#     image:
+#       repository: juanluisbaptiste/postfix
+#       tag: "1.7.1"
+#     env:
+#       - name: SMTP_SERVER
+#         valueFrom:
+#           secretKeyRef:
+#             name: smtp-secret
+#             key: smtp_server
+#       - name: SERVER_HOSTNAME
+#         valueFrom:
+#           secretKeyRef:
+#             name: smtp-secret
+#             key: server_hostname
+#       - name: SMTP_PORT
+#         valueFrom:
+#           secretKeyRef:
+#             name: smtp-secret
+#             key: smtp_port
+#       - name: SMTP_NETWORKS
+#         valueFrom:
+#           secretKeyRef:
+#             name: smtp-secret
+#             key: networks
+#       - name: ALWAYS_ADD_MISSING_HEADERS
+#         value: "true"
+#     resources:
+#       limits:
+#         memory: "1024Mi"
+#         cpu: "2"
+#       requests:
+#         memory: 256Mi
+#         cpu: 500m
+#     services:
+#       - name: smtp
+#         servicePort: 25
+#         targetPort: 25
+#     ingress:
+#       enabled: false
+#     volumes:
+#       enabled: false
