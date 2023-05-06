@@ -21,6 +21,11 @@ spec:
       repository: juanluisbaptiste/postfix
       tag: "1.7.1"
     env:
+      - name: SMTP_SERVER
+        valueFrom:
+          secretKeyRef:
+            name: smtp-secret
+            key: smtp_server
       - name: SERVER_HOSTNAME
         valueFrom:
           secretKeyRef:
