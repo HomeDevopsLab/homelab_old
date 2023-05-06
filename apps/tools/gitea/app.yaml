@@ -41,24 +41,6 @@ spec:
           secretKeyRef:
             name: gitea-db
             key: password
-      - name: GITEA__mailer__ENABLED
-        value: "true"
-      - name: GITEA__mailer__FROM
-        value: gitea@angrybits.pl
-      - name: GITEA__mailer__MAILER_TYPE
-        value: smtp
-      - name: GITEA__mailer__SMTP_ADDR
-        valueFrom:
-          secretKeyRef:
-            name: smtp-secret
-            key: server_hostname
-      - name: GITEA__mailer__SMTP_PORT
-        valueFrom:
-          secretKeyRef:
-            name: smtp-secret
-            key: smtp_port
-      - name: GITEA__mailer__IS_TLS_ENABLED
-        value: "false"
     resources:
       limits:
         memory: "2Gi"
