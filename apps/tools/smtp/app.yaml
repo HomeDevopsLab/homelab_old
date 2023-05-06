@@ -40,7 +40,7 @@ spec:
         valueFrom:
           secretKeyRef:
             name: smtp-secret
-            key: smtp_networks
+            key: networks
       - name: ALWAYS_ADD_MISSING_HEADERS
         value: "true"
     resources:
