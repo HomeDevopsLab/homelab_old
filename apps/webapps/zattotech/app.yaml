@@ -20,7 +20,7 @@ spec:
     image:
       imagePolicy: true
       repository: gitea.angrybits.pl/zatto/zattotech
-      tag: 0.0.3 # {"$imagepolicy": "flux-system:zattotech:tag"}
+      tag: 0.0.4 # {"$imagepolicy": "flux-system:zattotech:tag"}
     env:
       - name: DB_HOST
         valueFrom:
