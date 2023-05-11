@@ -52,6 +52,26 @@ spec:
           secretKeyRef:
             name: zattotech-secrets
             key: SECRET_KEY
+      - name: AWS_ACCESS_KEY_ID
+        valueFrom:
+          secretKeyRef:
+            name: zattotech-secrets
+            key: AWS_ACCESS_KEY_ID
+      - name: AWS_SECRET_ACCESS_KEY
+        valueFrom:
+          secretKeyRef:
+            name: zattotech-secrets
+            key: AWS_SECRET_ACCESS_KEY
+      - name: AWS_STORAGE_BUCKET_NAME
+        valueFrom:
+          secretKeyRef:
+            name: zattotech-secrets
+            key: AWS_STORAGE_BUCKET_NAME
+      - name: AWS_QUERYSTRING_AUTH
+        valueFrom:
+          secretKeyRef:
+            name: zattotech-secrets
+            key: AWS_QUERYSTRING_AUTH
       - name: MYSQL_ATTR_SSL_CA
         value: "./ca-certificates.crt"
     resources:
