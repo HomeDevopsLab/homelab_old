@@ -14,17 +14,17 @@ spec:
               image: gitea.angrybits.pl/kkrolikowski/backups:0.0.1
               imagePullPolicy: IfNotPresent
               command: ["/opt/app/backup.sh"]
-          env:
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: dbadmin
-                  key: login
-            - name: DB_PASS
-              valueFrom:
-                secretKeyRef:
-                  name: dbadmin
-                  key: password
-            - name: DB_HOST
-              value: lab-helper.lan
+              env:
+                - name: DB_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: dbadmin
+                      key: login
+                - name: DB_PASS
+                  valueFrom:
+                    secretKeyRef:
+                      name: dbadmin
+                      key: password
+                - name: DB_HOST
+                  value: lab-helper.lan
           restartPolicy: OnFailure
