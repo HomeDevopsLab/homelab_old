@@ -16,6 +16,7 @@ spec:
               command: ["/opt/app/backup.sh"]
               volumeMounts:
                 - mountPath: /storage
+                  subPath: homelab
                   name: backup-vol
               env:
                 - name: MYSQL_DB_USER
@@ -34,8 +35,8 @@ spec:
             - name: backup-vol
               nfs:
                 server: lab-storage.lan
-                path: /volume1/warez/Backups/homelab
-                readOnly: true
+                path: /volume1/warez/Backups
+                readOnly: false
           restartPolicy: OnFailure
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
