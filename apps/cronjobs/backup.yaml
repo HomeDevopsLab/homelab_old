@@ -4,29 +4,38 @@ metadata:
   name: backups
   namespace: default
 spec:
-  schedule: "*/5 * * * *"
+  schedule: "*/10 * * * *"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
             - name: hello
-              image: gitea.angrybits.pl/kkrolikowski/backups:0.0.2
+              image: gitea.angrybits.pl/kkrolikowski/backups:1.0.0
               imagePullPolicy: IfNotPresent
               command: ["/opt/app/backup.sh"]
+              volumeMounts:
+                - mountPath: /storage
+                  name: backup-vol
               env:
-                - name: DB_USER
+                - name: MYSQL_DB_USER
                   valueFrom:
                     secretKeyRef:
                       name: dbadmin
                       key: login
-                - name: DB_PASS
+                - name: MYSQL_DB_PASS
                   valueFrom:
                     secretKeyRef:
                       name: dbadmin
                       key: password
-                - name: DB_HOST
+                - name: MYSQL_DB_HOST
                   value: lab-helper.lan
+          volumes:
+            - name: backup-vol
+              nfs:
+                server: lab-storage.lan
+                path: /volume1/warez/Backups/homelab
+                readOnly: true
           restartPolicy: OnFailure
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
