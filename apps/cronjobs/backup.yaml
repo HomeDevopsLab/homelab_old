@@ -28,5 +28,5 @@ spec:
                 - name: DB_HOST
                   value: lab-helper.lan
           restartPolicy: OnFailure
-    successfulJobsHistoryLimit: 1
-    failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
