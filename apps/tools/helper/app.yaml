@@ -29,10 +29,4 @@ spec:
     ingress:
       enabled: false
     volumes:
-      enabled: true
-      mountPath:
-        - homelab:/storage
-      type:
-        nfs:
-          server: lab-storage.lan
-          path: /volume1/warez/Backups
+      enabled: false
