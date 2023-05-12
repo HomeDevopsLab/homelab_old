@@ -11,7 +11,7 @@ spec:
         spec:
           containers:
             - name: hello
-              image: gitea.angrybits.pl/kkrolikowski/backups:0.0.1
+              image: gitea.angrybits.pl/kkrolikowski/backups:0.0.2
               imagePullPolicy: IfNotPresent
               command: ["/opt/app/backup.sh"]
               env:
@@ -28,3 +28,5 @@ spec:
                 - name: DB_HOST
                   value: lab-helper.lan
           restartPolicy: OnFailure
+          successfulJobsHistoryLimit: 1
+          failedJobsHistoryLimit: 1
