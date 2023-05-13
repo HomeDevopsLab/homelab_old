@@ -10,8 +10,8 @@ spec:
       template:
         spec:
           containers:
-            - name: hello
-              image: gitea.angrybits.pl/kkrolikowski/backups:1.1.1
+            - name: backup-job
+              image: gitea.angrybits.pl/kkrolikowski/backups:1.1.2
               imagePullPolicy: IfNotPresent
               command: ["/opt/app/backup.sh"]
               volumeMounts:
