@@ -4,7 +4,7 @@ metadata:
   name: backups
   namespace: default
 spec:
-  schedule: "*/15 * * * *"
+  schedule: "0 2 * * *"
   jobTemplate:
     spec:
       template:
