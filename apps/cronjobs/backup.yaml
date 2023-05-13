@@ -4,14 +4,14 @@ metadata:
   name: backups
   namespace: default
 spec:
-  schedule: "0 2 * * *"
+  schedule: "*/15 * * * *"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
             - name: hello
-              image: gitea.angrybits.pl/kkrolikowski/backups:1.0.0
+              image: gitea.angrybits.pl/kkrolikowski/backups:1.1.0
               imagePullPolicy: IfNotPresent
               command: ["/opt/app/backup.sh"]
               volumeMounts:
