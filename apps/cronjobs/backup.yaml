@@ -1,42 +1,42 @@
-# apiVersion: batch/v1
-# kind: CronJob
-# metadata:
-#   name: backups
-#   namespace: default
-# spec:
-#   schedule: "*/10 * * * *"
-#   jobTemplate:
-#     spec:
-#       template:
-#         spec:
-#           containers:
-#             - name: hello
-#               image: gitea.angrybits.pl/kkrolikowski/backups:1.0.0
-#               imagePullPolicy: IfNotPresent
-#               command: ["/opt/app/backup.sh"]
-#               volumeMounts:
-#                 - mountPath: /storage
-#                   subPath: homelab
-#                   name: backup-vol
-#               env:
-#                 - name: MYSQL_DB_USER
-#                   valueFrom:
-#                     secretKeyRef:
-#                       name: dbadmin
-#                       key: login
-#                 - name: MYSQL_DB_PASS
-#                   valueFrom:
-#                     secretKeyRef:
-#                       name: dbadmin
-#                       key: password
-#                 - name: MYSQL_DB_HOST
-#                   value: lab-helper.lan
-#           volumes:
-#             - name: backup-vol
-#               nfs:
-#                 server: lab-storage.lan
-#                 path: /volume1/warez/Backups
-#                 readOnly: false
-#           restartPolicy: OnFailure
-#   successfulJobsHistoryLimit: 1
-#   failedJobsHistoryLimit: 1
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backups
+  namespace: default
+spec:
+  schedule: "*/10 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: hello
+              image: gitea.angrybits.pl/kkrolikowski/backups:1.0.0
+              imagePullPolicy: IfNotPresent
+              command: ["/opt/app/backup.sh"]
+              volumeMounts:
+                - mountPath: /storage
+                  subPath: homelab
+                  name: backup-vol
+              env:
+                - name: MYSQL_DB_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: dbadmin
+                      key: login
+                - name: MYSQL_DB_PASS
+                  valueFrom:
+                    secretKeyRef:
+                      name: dbadmin
+                      key: password
+                - name: MYSQL_DB_HOST
+                  value: lab-helper.lan
+          volumes:
+            - name: backup-vol
+              nfs:
+                server: lab-storage.lan
+                path: /volume1/warez/Backups
+                readOnly: false
+          restartPolicy: OnFailure
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
