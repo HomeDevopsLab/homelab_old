@@ -18,6 +18,8 @@ spec:
                 - mountPath: /storage
                   subPath: homelab
                   name: backup-vol
+                - mountPath: /storagelab
+                  name: storagelab-vol
               env:
                 - name: MYSQL_DB_USER
                   valueFrom:
@@ -37,6 +39,11 @@ spec:
                 server: lab-storage.lan
                 path: /volume1/warez/Backups
                 readOnly: false
+            - name: storagelab-vol
+              nfs:
+                server: lab-storage.lan
+                path: /volume1/storagelab
+                readOnly: true
           restartPolicy: OnFailure
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
