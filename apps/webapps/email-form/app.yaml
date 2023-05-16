@@ -20,7 +20,7 @@ spec:
     image:
       imagePolicy: true
       repository: gitea.angrybits.pl/kkrolikowski/email-form
-      tag: 0.0.1 # {"$imagepolicy": "flux-system:email-form:tag"}
+      tag: 0.0.2 # {"$imagepolicy": "flux-system:email-form:tag"}
     resources:
       limits:
         memory: "128Mi"
