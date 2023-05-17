@@ -18,7 +18,7 @@ spec:
     image:
       imagePolicy: enabled
       repository: devkrolikowski/swiss-army-knife
-      tag: 2.0.0 # {"$imagepolicy": "flux-system:helper:tag"}
+      tag: 2.1.0 # {"$imagepolicy": "flux-system:helper:tag"}
     resources:
       limits:
         memory: "1024Mi"
