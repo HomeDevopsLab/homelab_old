@@ -33,6 +33,18 @@ spec:
                       key: password
                 - name: MYSQL_DB_HOST
                   value: lab-helper.lan
+                - name: PG_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: cron-secrets
+                      key: pguser
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: cron-secrets
+                      key: pgpass
+                - name: PG_HOST
+                  value: lab-helper.lan
           volumes:
             - name: backup-vol
               nfs:
