@@ -43,6 +43,8 @@ spec:
             key: password
       - name: GITEA__service__DISABLE_REGISTRATION
         value: "true"
+      - name: GITEA__service__explore__REQUIRE_SIGNIN_VIEW
+        value: "true"
     resources:
       limits:
         memory: "2Gi"
