@@ -47,6 +47,8 @@ spec:
           secretKeyRef:
             name: drone-secret
             key: DRONE_ADMIN
+      - name: DRONE_GIT_ALWAYS_AUTH
+        value: "true"
     resources:
       limits:
         memory: "1024Mi"
@@ -68,7 +70,7 @@ spec:
             - drone.angrybits.pl
     volumes:
       enabled: true
-      mountPath: 
+      mountPath:
         - drone:/data
       ownership: 1024:100
       type:
