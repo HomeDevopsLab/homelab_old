@@ -25,7 +25,7 @@ spec:
         cpu: "2"
       requests:
         memory: "1024Mi"
-        cpu: "1"
+        cpu: "10m"
     ingress:
       enabled: false
     volumes:
