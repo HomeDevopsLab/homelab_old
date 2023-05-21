@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: topliv-web
+  name: topliv-manager
   namespace: default
 spec:
   interval: 1m
@@ -19,8 +19,8 @@ spec:
       enabled: false
     image:
       imagePolicy: true
-      repository: gitea.angrybits.pl/zatto/topliv-web
-      tag: 0.0.4 # {"$imagepolicy": "flux-system:topliv-web:tag"}
+      repository: gitea.angrybits.pl/zatto/topliv-manager
+      tag: 0.0.1 # {"$imagepolicy": "flux-system:topliv-manager:tag"}
     env:
       - name: AWS_ACCESS_KEY_ID
         valueFrom:
@@ -65,7 +65,7 @@ spec:
       - name: AWS_QUERYSTRING_AUTH
         value: "False"
       - name: MYSQL_ATTR_SSL_CA
-        value: "./projekttopsky/ssl/ca-certificates.crt"
+        value: "/etc/ssl/certs/ca-certificates.crt"
     resources:
       limits:
         memory: "1024Mi"
