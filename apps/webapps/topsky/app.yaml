@@ -19,7 +19,7 @@ spec:
       enabled: false
     image:
       imagePolicy: true
-      repository: gitea.angrybits.pl/zatto/topliv-manager
+      repository: gitea.angrybits.pl/zatto/manager
       tag: 0.0.1 # {"$imagepolicy": "flux-system:topliv-manager:tag"}
     env:
       - name: AWS_ACCESS_KEY_ID
