@@ -41,6 +41,8 @@ spec:
         value: ":8080"
       - name: MM_SERVICESETTINGS_ENABLEINSECUREOUTGOINGCONNECTIONS
         value: "true"
+      - name: MM_SERVICESETTINGS_ENABLEPOSTUSERNAMEOVERRIDE
+        value: "true"
     resources:
       limits:
         memory: "1024Mi"
