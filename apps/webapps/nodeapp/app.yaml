@@ -20,7 +20,7 @@ spec:
     image:
       imagePolicy: true
       repository: gitea.angrybits.pl/kkrolikowski/nodeapp
-      tag: 0.6.1 # {"$imagepolicy": "flux-system:nodeapp:tag"}
+      tag: 0.6.2 # {"$imagepolicy": "flux-system:nodeapp:tag"}
     resources:
       limits:
         memory: "128Mi"
