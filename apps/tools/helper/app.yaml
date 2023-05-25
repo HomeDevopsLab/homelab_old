@@ -1,34 +1,34 @@
-# apiVersion: helm.toolkit.fluxcd.io/v2beta1
-# kind: HelmRelease
-# metadata:
-#   name: helper
-#   namespace: default
-# spec:
-#   interval: 1m
-#   chart:
-#     spec:
-#       chart: ./chart
-#       sourceRef:
-#         kind: GitRepository
-#         name: homelab-app-chart-notify-customization
-#         namespace: default
-#       interval: 1m
-#   values:
-#     replicaCount: 1
-#     image:
-#       imagePolicy: enabled
-#       repository: devkrolikowski/swiss-army-knife
-#       tag: 2.1.0 # {"$imagepolicy": "flux-system:helper:tag"}
-#     resources:
-#       limits:
-#         memory: "1024Mi"
-#         cpu: "2"
-#       requests:
-#         memory: "1024Mi"
-#         cpu: "10m"
-#     ingress:
-#       enabled: false
-#     volumes:
-#       enabled: false
-#     startupProbes:
-#       enabled: false
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: helper
+  namespace: default
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: ./chart
+      sourceRef:
+        kind: GitRepository
+        name: homelab-app-chart-notify-customization
+        namespace: default
+      interval: 1m
+  values:
+    replicaCount: 1
+    image:
+      imagePolicy: enabled
+      repository: devkrolikowski/swiss-army-knife
+      tag: 2.1.0 # {"$imagepolicy": "flux-system:helper:tag"}
+    resources:
+      limits:
+        memory: "1024Mi"
+        cpu: "2"
+      requests:
+        memory: "1024Mi"
+        cpu: "10m"
+    ingress:
+      enabled: false
+    volumes:
+      enabled: false
+    startupProbes:
+      enabled: false
