@@ -10,7 +10,7 @@ spec:
       chart: ./chart
       sourceRef:
         kind: GitRepository
-        name: homelab-app-chart
+        name: homelab-app-chart-notify-customization
         namespace: default
       interval: 1m
   values:
@@ -39,3 +39,6 @@ spec:
         - host: homer.lan
     volumes:
       enabled: false
+    deployNotifications:
+      enabled: true
+      image: gitea.angrybits.pl/kkrolikowski/mattermost-notify:0.0.3
