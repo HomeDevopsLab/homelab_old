@@ -20,7 +20,7 @@ spec:
     image:
       imagePolicy: true
       repository: gitea.angrybits.pl/kkrolikowski/webtools
-      tag: 2.0.1 # {"$imagepolicy": "flux-system:webtools:tag"}
+      tag: 2.0.2 # {"$imagepolicy": "flux-system:webtools:tag"}
     resources:
       limits:
         memory: "128Mi"
