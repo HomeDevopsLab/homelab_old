@@ -10,7 +10,7 @@ spec:
       chart: ./chart
       sourceRef:
         kind: GitRepository
-        name: homelab-app-chart
+        name: homelab-app-chart-notify-customization
         namespace: default
       interval: 1m
   values:
@@ -29,4 +29,6 @@ spec:
     ingress:
       enabled: false
     volumes:
+      enabled: false
+    startupProbes:
       enabled: false
