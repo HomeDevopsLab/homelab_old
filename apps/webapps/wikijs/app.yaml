@@ -57,5 +57,3 @@ spec:
         - host: doc-lab.lan
     volumes:
       enabled: false
-    deployNotifications:
-      enabled: false
