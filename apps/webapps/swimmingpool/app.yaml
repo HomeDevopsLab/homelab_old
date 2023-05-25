@@ -42,3 +42,5 @@ spec:
     deployNotifications:
       enabled: true
       image: gitea.angrybits.pl/kkrolikowski/mattermost-notify:0.0.3
+    startupProbes:
+      enabled: false
