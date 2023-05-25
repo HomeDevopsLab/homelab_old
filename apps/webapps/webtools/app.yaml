@@ -10,7 +10,7 @@ spec:
       chart: ./chart
       sourceRef:
         kind: GitRepository
-        name: homelab-app-chart-probes-hooks
+        name: homelab-app-chart
         namespace: default
       interval: 1m
   values:
