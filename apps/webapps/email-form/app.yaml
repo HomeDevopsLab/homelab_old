@@ -10,7 +10,7 @@ spec:
       chart: ./chart
       sourceRef:
         kind: GitRepository
-        name: homelab-app-chart
+        name: homelab-app-chart-probes-hooks
         namespace: default
       interval: 1m
   values:
@@ -42,3 +42,6 @@ spec:
             - testy.lab.angrybits.pl
     volumes:
       enabled: false
+    deployNotifications:
+      enabled: true
+      image: gitea.angrybits.pl/kkrolikowski/mattermost-notify:0.0.3
