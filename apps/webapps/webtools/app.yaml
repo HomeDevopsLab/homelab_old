@@ -1,44 +1,44 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  name: webtools
-  namespace: default
-spec:
-  interval: 1m
-  chart:
-    spec:
-      chart: ./chart
-      sourceRef:
-        kind: GitRepository
-        name: homelab-app-chart-probes-hooks
-        namespace: default
-      interval: 1m
-  values:
-    replicaCount: 1
-    database:
-      enabled: false
-    image:
-      imagePolicy: true
-      repository: gitea.angrybits.pl/kkrolikowski/webtools
-      tag: 2.0.2 # {"$imagepolicy": "flux-system:webtools:tag"}
-    resources:
-      limits:
-        memory: "128Mi"
-        cpu: "100m"
-      requests:
-        memory: 100Mi
-        cpu: 30m
-    services:
-      - name: http
-        servicePort: 3000
-        targetPort: 3000
-    ingress:
-      enabled: true
-      ssl: true
-      hosts:
-        - host: tools.lab.angrybits.pl
-      tls:
-        - hosts:
-            - tools.lab.angrybits.pl
-    volumes:
-      enabled: false
+# apiVersion: helm.toolkit.fluxcd.io/v2beta1
+# kind: HelmRelease
+# metadata:
+#   name: webtools
+#   namespace: default
+# spec:
+#   interval: 1m
+#   chart:
+#     spec:
+#       chart: ./chart
+#       sourceRef:
+#         kind: GitRepository
+#         name: homelab-app-chart-probes-hooks
+#         namespace: default
+#       interval: 1m
+#   values:
+#     replicaCount: 1
+#     database:
+#       enabled: false
+#     image:
+#       imagePolicy: true
+#       repository: gitea.angrybits.pl/kkrolikowski/webtools
+#       tag: 2.0.2 # {"$imagepolicy": "flux-system:webtools:tag"}
+#     resources:
+#       limits:
+#         memory: "128Mi"
+#         cpu: "100m"
+#       requests:
+#         memory: 100Mi
+#         cpu: 30m
+#     services:
+#       - name: http
+#         servicePort: 3000
+#         targetPort: 3000
+#     ingress:
+#       enabled: true
+#       ssl: true
+#       hosts:
+#         - host: tools.lab.angrybits.pl
+#       tls:
+#         - hosts:
+#             - tools.lab.angrybits.pl
+#     volumes:
+#       enabled: false
