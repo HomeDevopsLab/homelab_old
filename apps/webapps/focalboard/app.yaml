@@ -49,3 +49,6 @@ spec:
         nfs:
           server: lab-storage.lan
           path: /volume1/storagelab
+    deployNotifications:
+      enabled: true
+      image: gitea.angrybits.pl/kkrolikowski/mattermost-notify:0.0.3

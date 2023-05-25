@@ -39,3 +39,6 @@ spec:
         - host: basen.lan
     volumes:
       enabled: false
+    deployNotifications:
+      enabled: true
+      image: gitea.angrybits.pl/kkrolikowski/mattermost-notify:0.0.3
