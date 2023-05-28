@@ -20,7 +20,7 @@ spec:
     image:
       imagePolicy: true
       repository: gitea.angrybits.pl/kkrolikowski/highscore
-      tag: 0.0.1 # {"$imagepolicy": "flux-system:js-testapp:tag"}
+      tag: 0.0.2 # {"$imagepolicy": "flux-system:js-testapp:tag"}
     resources:
       limits:
         memory: "128Mi"
