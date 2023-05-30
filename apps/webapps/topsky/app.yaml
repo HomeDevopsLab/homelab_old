@@ -20,7 +20,7 @@ spec:
     image:
       imagePolicy: true
       repository: gitea.angrybits.pl/zatto/manager
-      tag: 0.0.5 # {"$imagepolicy": "flux-system:topliv-manager:tag"}
+      tag: 0.0.6 # {"$imagepolicy": "flux-system:topliv-manager:tag"}
     env:
       - name: AWS_ACCESS_KEY_ID
         valueFrom:
