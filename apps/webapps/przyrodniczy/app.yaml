@@ -35,12 +35,14 @@ spec:
         - hosts:
             - przyrodniczy.website
     volumes:
+      volumes:
       enabled: true
       mountPath:
-        - html:/var/www/html
-      ownership: 0:0
+        - przyrodniczy:/var/www/html
+      ownership: 1024:100
       type:
-        pvc:
-          size: 2Gi
+        nfs:
+          server: lab-storage.lan
+          path: /volume1/storagelab
     database:
       enabled: true
