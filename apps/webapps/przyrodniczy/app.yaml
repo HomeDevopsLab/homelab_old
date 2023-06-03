@@ -38,7 +38,7 @@ spec:
       volumes:
       enabled: true
       mountPath:
-        - przyrodniczy:/var/www/html
+        - html:/var/www/html
       ownership: 1024:100
       type:
         nfs:
