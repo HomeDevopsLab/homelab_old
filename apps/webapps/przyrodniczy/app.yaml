@@ -10,7 +10,7 @@ spec:
       chart: ./basic
       sourceRef:
         kind: GitRepository
-        name: basic-chart-longhorn
+        name: homelab-app-chart
         namespace: default
       interval: 1m
   values:
